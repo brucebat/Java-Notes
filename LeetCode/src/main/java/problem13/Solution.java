@@ -7,7 +7,7 @@ import java.util.*;
  *
  * @author Sun Tianyu
  * @version 1.0
- * @date Created in 2020/10/13
+ * @since Created in 2020/10/13
  */
 public class Solution {
 

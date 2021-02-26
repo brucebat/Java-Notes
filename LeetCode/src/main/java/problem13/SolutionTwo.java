@@ -3,10 +3,11 @@ package problem13;
 import java.util.List;
 
 /**
+ * LeetCode13.罗马数字转整数 优化解法
+ *
  * @author Sun Tianyu
  * @version 1.0
- * @date Created in 2020/10/13
- * @description LeetCode13.罗马数字转整数 优化解法
+ * @since Created in 2020/10/13
  */
 public class SolutionTwo {
 
