@@ -23,7 +23,7 @@ public class SolutionTwo {
         }
         String tempPrefix = strs[0];
         for (String str : strs) {
-
+            
         }
         return "";
     }

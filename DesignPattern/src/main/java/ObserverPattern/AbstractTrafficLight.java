@@ -10,7 +10,7 @@ import java.util.List;
  * @version 1.0
  * @since Created at 2021/3/7 9:17 下午
  */
-public abstract class TrafficLight {
+public abstract class AbstractTrafficLight {
 
     /**
      * 观察当前目标的的观察者集合

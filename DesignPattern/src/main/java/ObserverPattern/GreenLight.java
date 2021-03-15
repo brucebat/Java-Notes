@@ -9,7 +9,7 @@ import org.apache.commons.collections.CollectionUtils;
  * @version 1.0
  * @since Created at 2021/3/7 10:18 下午
  */
-public class GreenLight extends TrafficLight{
+public class GreenLight extends AbstractTrafficLight {
 
     @Override
     public void notice() {

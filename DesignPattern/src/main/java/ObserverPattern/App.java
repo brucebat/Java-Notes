@@ -11,7 +11,7 @@ public class App {
 
     public static void main(String[] args) {
         // 观察对象
-        TrafficLight trafficLight = new RedLight();
+        AbstractTrafficLight trafficLight = new RedLight();
         // 观察者
         Car car, car1;
         car = new Bicycle();

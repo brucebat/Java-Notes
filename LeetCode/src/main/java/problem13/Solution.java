@@ -11,22 +11,22 @@ import java.util.*;
  */
 public class Solution {
 
-    private static final Map<String, Integer> basicRomanDic = new HashMap<String, Integer>();
+    private static final Map<String, Integer> BASIC_ROMAN_DIC = new HashMap<String, Integer>();
 
     static {
-        basicRomanDic.put("I", 1);
-        basicRomanDic.put("V", 5);
-        basicRomanDic.put("X", 10);
-        basicRomanDic.put("L", 50);
-        basicRomanDic.put("C", 100);
-        basicRomanDic.put("D", 500);
-        basicRomanDic.put("M", 1000);
-        basicRomanDic.put("IV", 4);
-        basicRomanDic.put("IX", 9);
-        basicRomanDic.put("XL", 40);
-        basicRomanDic.put("XC", 90);
-        basicRomanDic.put("CD", 400);
-        basicRomanDic.put("CM", 900);
+        BASIC_ROMAN_DIC.put("I", 1);
+        BASIC_ROMAN_DIC.put("V", 5);
+        BASIC_ROMAN_DIC.put("X", 10);
+        BASIC_ROMAN_DIC.put("L", 50);
+        BASIC_ROMAN_DIC.put("C", 100);
+        BASIC_ROMAN_DIC.put("D", 500);
+        BASIC_ROMAN_DIC.put("M", 1000);
+        BASIC_ROMAN_DIC.put("IV", 4);
+        BASIC_ROMAN_DIC.put("IX", 9);
+        BASIC_ROMAN_DIC.put("XL", 40);
+        BASIC_ROMAN_DIC.put("XC", 90);
+        BASIC_ROMAN_DIC.put("CD", 400);
+        BASIC_ROMAN_DIC.put("CM", 900);
 
     }
 
@@ -59,7 +59,7 @@ public class Solution {
             if (i < numbers.length - 1) {
                 next = numbers[i + 1];
             }
-            if (basicRomanDic.containsKey(current + next)) {
+            if (BASIC_ROMAN_DIC.containsKey(current + next)) {
                 targetNumbers.add(current + next);
                 i ++ ;
             } else {
@@ -81,7 +81,7 @@ public class Solution {
             return sum;
         }
         for (String romanNumber : romanNumbers) {
-            sum += basicRomanDic.get(romanNumber);
+            sum += BASIC_ROMAN_DIC.get(romanNumber);
         }
         return sum;
     }
