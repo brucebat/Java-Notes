@@ -1,6 +1,8 @@
 package agent;
 
+import java.lang.instrument.ClassFileTransformer;
 import java.lang.instrument.Instrumentation;
+import java.security.ProtectionDomain;
 
 /**
  * Demo Agent
@@ -19,10 +21,20 @@ public class DemoAgent {
      */
     public static void premain(String agentArgs, Instrumentation instrumentation) {
         System.out.println("这是一个实验用的DemoAgent");
+        instrumentation.addTransformer(new DefineTransformer(), true);
     }
 
     public static void agentmain(String agentArgs, Instrumentation instrumentation) {
         System.out.println("这是一个实验用的DemoAgent");
+    }
+
+    static class DefineTransformer implements ClassFileTransformer {
+
+        @Override
+        public byte[] transform(ClassLoader loader, String className, Class<?> classBeingRedefined, ProtectionDomain protectionDomain, byte[] classfileBuffer) {
+            System.out.println("premain load Class:" + className);
+            return classfileBuffer;
+        }
     }
 
 }
