@@ -21,12 +21,13 @@ public class DemoAgent {
      */
     public static void premain(String agentArgs, Instrumentation instrumentation) {
         System.out.println("premian: 这是一个实验用的DemoAgent");
-        instrumentation.addTransformer(new DefineTransformer(), true);
+        System.out.println("premian: " + Thread.currentThread().getThreadGroup().getName() + ", threadId: " + Thread.currentThread().getId());
+        System.out.println("premian, 当前线程是否为保护线程: " + Thread.currentThread().isDaemon());
     }
 
     public static void agentmain(String agentArgs, Instrumentation instrumentation) {
         System.out.println("agnetmain: 这是一个实验用的DemoAgent, 线程名称为: " + Thread.currentThread().getName());
-        System.out.println(Thread.currentThread().getThreadGroup().getName());
+        System.out.println(Thread.currentThread().getThreadGroup().getName() + ", threadId: " + Thread.currentThread().getId());
         System.out.println("当前线程是否为保护线程: " + Thread.currentThread().isDaemon());
     }
 

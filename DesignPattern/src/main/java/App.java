@@ -7,7 +7,7 @@ public class App {
 
     public static void main(String[] args) throws InterruptedException {
         System.out.println(Thread.currentThread().getName() + ", 这是一个java agent测试类");
-        System.out.println(Thread.currentThread().getThreadGroup().getParent().getName());
+        System.out.println(Thread.currentThread().getThreadGroup().getParent().getName() + ", ThreadId: " + Thread.currentThread().getId());
         Thread.sleep(10000);
     }
 }
