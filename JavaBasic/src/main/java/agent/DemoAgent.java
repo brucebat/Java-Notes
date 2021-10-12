@@ -23,6 +23,7 @@ public class DemoAgent {
         System.out.println("premian: 这是一个实验用的DemoAgent");
         System.out.println("premian: " + Thread.currentThread().getThreadGroup().getName() + ", threadId: " + Thread.currentThread().getId());
         System.out.println("premian, 当前线程是否为保护线程: " + Thread.currentThread().isDaemon());
+
     }
 
     public static void agentmain(String agentArgs, Instrumentation instrumentation) {
@@ -31,6 +32,9 @@ public class DemoAgent {
         System.out.println("当前线程是否为保护线程: " + Thread.currentThread().isDaemon());
     }
 
+    /**
+     * 这里会针对所有加载进JVM当中的class文件进行转化
+     */
     static class DefineTransformer implements ClassFileTransformer {
 
         @Override

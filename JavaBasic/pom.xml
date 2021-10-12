@@ -48,9 +48,11 @@
                 <artifactId>maven-assembly-plugin</artifactId>
                 <configuration>
                     <descriptorRefs>
+                        <!--  当前项目所有依赖均会被打包进该目标jar当中  -->
                         <descriptorRef>jar-with-dependencies</descriptorRef>
                     </descriptorRefs>
                     <archive>
+                        <!--  通过指定MANIFEST文件来确定agent配置信息  -->
                         <manifestFile>src/main/resources/META-INF/MANIFEST.MF</manifestFile>
                     </archive>
                 </configuration>
