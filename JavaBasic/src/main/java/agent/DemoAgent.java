@@ -1,5 +1,11 @@
 package agent;
 
+import interceptor.TimeInterceptor;
+import net.bytebuddy.agent.builder.AgentBuilder;
+import net.bytebuddy.implementation.MethodDelegation;
+import net.bytebuddy.matcher.ElementMatchers;
+import org.apache.commons.lang3.StringUtils;
+
 import java.lang.instrument.ClassFileTransformer;
 import java.lang.instrument.Instrumentation;
 import java.security.ProtectionDomain;
@@ -20,10 +26,8 @@ public class DemoAgent {
      * @param instrumentation 插桩
      */
     public static void premain(String agentArgs, Instrumentation instrumentation) {
-        System.out.println("premian: 这是一个实验用的DemoAgent");
-        System.out.println("premian: " + Thread.currentThread().getName() + ", threadId: " + Thread.currentThread().getId());
-        System.out.println("premian, 当前线程是否为保护线程: " + Thread.currentThread().isDaemon());
-        instrumentation.addTransformer(new DefineTransformer("premain"));
+        System.out.println("This is a simple demo agent.");
+        handleInstrument(instrumentation);
     }
 
     public static void agentmain(String agentArgs, Instrumentation instrumentation) {
@@ -48,11 +52,20 @@ public class DemoAgent {
         public byte[] transform(ClassLoader loader, String className, Class<?> classBeingRedefined, ProtectionDomain protectionDomain, byte[] classfileBuffer) {
             System.out.println(name + " load Class:" + className + ", ThreadName: " + Thread.currentThread().getName() +
                     ", ThreadGroupName: " + Thread.currentThread().getThreadGroup().getName() + ", 是否为保护线程: " + Thread.currentThread().isDaemon());
-            // 这里只是提供了一个入口可以去感知到对应的class文件，
-            // 如果想要对class文件进行实际的变更可以使用javaassist或者Byte Code等工具，
-            // 也可以直接针对上面的字节数据进行修改
             return classfileBuffer;
         }
+    }
+
+    /**
+     * 进行插桩处理
+     *
+     * @param instrumentation 待处理桩
+     */
+    private static void handleInstrument(Instrumentation instrumentation) {
+        new AgentBuilder.Default().
+                type(ElementMatchers.nameEndsWith("App"))
+                .transform((builder, type, classLoader, module) -> builder.method(ElementMatchers.any()).intercept(MethodDelegation.to(TimeInterceptor.class)))
+                .installOn(instrumentation);
     }
 
 }
