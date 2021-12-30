@@ -61,8 +61,8 @@ public class DemoAgent {
      * @param instrumentation 待处理桩
      */
     private static void handleInstrument(Instrumentation instrumentation) {
-        new AgentBuilder.Default().
-                type(ElementMatchers.nameEndsWith("App"))
+        new AgentBuilder.Default()
+                .type(ElementMatchers.nameEndsWith("App"))
                 .transform((builder, type, classLoader, module) -> builder.method(ElementMatchers.any()).intercept(MethodDelegation.to(TimeInterceptor.class)))
                 .installOn(instrumentation);
     }
