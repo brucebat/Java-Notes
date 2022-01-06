@@ -8,7 +8,7 @@ import java.lang.reflect.Method;
 import java.util.concurrent.Callable;
 
 /**
- * 时间统计拦截器
+ * 时间统计拦截器，虚拟机维度的aop
  *
  * @author brucebat
  * @version 1.0
@@ -26,9 +26,11 @@ public class TimeInterceptor {
     @RuntimeType
     public static Object intercept(@Origin Method method, @SuperCall Callable<?> callable) throws Exception {
         long start = System.currentTimeMillis();
+        System.out.println("agent test: before method invoke! Method name: " + method.getName());
         try {
             return callable.call();
         } finally {
+            System.out.println("agent test: after method invoke! Method name: " + method.getName());
             System.out.println(method + ": took " + (System.currentTimeMillis() - start) + " millisecond");
         }
     }

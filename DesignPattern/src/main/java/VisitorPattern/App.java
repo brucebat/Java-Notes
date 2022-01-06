@@ -19,6 +19,5 @@ public class App {
 
     private static void doSomething() {
         System.out.println(Thread.currentThread().getName() + ", 这是一个java agent测试类");
-        System.out.println(Thread.currentThread().getThreadGroup().getParent().getName() + ", ThreadId: " + Thread.currentThread().getId());
     }
 }
