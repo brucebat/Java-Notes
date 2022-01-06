@@ -11,6 +11,7 @@
     <modules>
         <module>LeetCode</module>
         <module>DesignPattern</module>
+        <module>JavaBasic</module>
     </modules>
 
     <build>
