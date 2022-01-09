@@ -29,6 +29,10 @@ public class TimeInterceptor {
         System.out.println("agent test: before method invoke! Method name: " + method.getName());
         try {
             return callable.call();
+        } catch (Exception e) {
+            // 进行异常信息上报
+            System.out.println("方法执行发生异常" + e.getMessage());
+            throw e;
         } finally {
             System.out.println("agent test: after method invoke! Method name: " + method.getName());
             System.out.println(method + ": took " + (System.currentTimeMillis() - start) + " millisecond");
