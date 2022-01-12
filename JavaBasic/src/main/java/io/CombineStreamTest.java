@@ -15,6 +15,7 @@ import java.io.SequenceInputStream;
 public class CombineStreamTest {
 
     public static void main(String[] args) {
+        // 合并工作流 -- SequenceInputStream
         InputStream inputStreamOne = new ByteArrayInputStream("This is a test.".getBytes());
         InputStream inputStreamTwo;
         try {
