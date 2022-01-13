@@ -167,16 +167,4 @@ public class CustomSketchUtils {
         int desHeight = srcRectangle.height + lenDaltHeight * 2;
         return new Rectangle(new Dimension(desWidth, desHeight));
     }
-
-
-    public static void main(String[] args) {
-        String url = "xxxxxx";
-        String url2 = "xxxxxxx";
-        BufferedImage rotatedImage = modifyImageScale(readImg(url2), 480, 640);
-        write2Localhost(rotatedImage, "/Users/suntianyu/Desktop/test2.png");
-        rotatedImage = modifyImageAngle(rotatedImage, 90);
-        write2Localhost(rotatedImage, "/Users/suntianyu/Desktop/test1.png");
-        BufferedImage canvas = texture(rotatedImage, readImg(url), 200, 200);
-        write2Localhost(canvas, "/Users/suntianyu/Desktop/test.png");
-    }
 }
