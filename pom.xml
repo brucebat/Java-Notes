@@ -12,6 +12,7 @@
         <module>LeetCode</module>
         <module>DesignPattern</module>
         <module>JavaBasic</module>
+        <module>JavaTest</module>
     </modules>
 
     <build>
