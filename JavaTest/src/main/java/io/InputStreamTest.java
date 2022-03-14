@@ -92,7 +92,7 @@ public class InputStreamTest {
         // 测试文本
         String text = "测试";
         // 创建一个输出流
-        try (OutputStream outputStream = new FileOutputStream("/Users/suntianyu/Desktop/test.json")) {
+        try (OutputStream outputStream = new FileOutputStream("/Users/suntianyu/Desktop/test.txt")) {
             // 将字符串转换为字节数组，并写入到输出流中
             outputStream.write(text.getBytes());
             // 进行输入流的后续操作
@@ -104,7 +104,7 @@ public class InputStreamTest {
     public static void testFileWriter() {
         String text = "蝙蝠侠";
         // 创建一个字符输出流，这里使用try-with-resources来避免显示的关闭流
-        try (Writer writer = new FileWriter("/Users/suntianyu/Desktop/test.json")) {
+        try (Writer writer = new FileWriter("/Users/suntianyu/Desktop/test.txt")) {
             // 将字符输入流中的第一个字符读取到缓冲区中
             writer.write(text);
             // 将缓冲区中的数据写入到输出流中
@@ -115,6 +115,6 @@ public class InputStreamTest {
     }
 
     public static void main(String[] args) {
-        testFileReader();
+        testFileWriter();
     }
 }
