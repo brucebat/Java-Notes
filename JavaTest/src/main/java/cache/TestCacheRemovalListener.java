@@ -15,10 +15,13 @@ public class TestCacheRemovalListener implements RemovalListener<String, String>
 
     @Override
     public void onRemoval(RemovalNotification<String, String> notification) {
+        String key = notification.getKey();
+        String value = notification.getValue();
         if (RemovalCause.REPLACED.equals(notification.getCause())) {
-            String key = notification.getKey();
-            String value = notification.getValue();
-            System.out.println("接收到缓存修改通知请求， key = " + key + ", value = " + value);
+            System.out.println("接收到缓存修改通知, 被修改key = " + key + ", value = " + value);
+        }
+        if (RemovalCause.EXPLICIT.equals(notification.getCause())) {
+            System.out.println("接收到缓存手动删除通知, 被删除key = " + key + ", value = " + value);
         }
     }
 }

@@ -13,8 +13,10 @@ public class CacheTest {
     public static void main(String[] args) {
         Cache<String, String> cache = CacheBuilder.newBuilder().removalListener(new TestCacheRemovalListener()).build();
         cache.put("test", "testOld");
+        cache.put("deleteTest", "This is a test.");
         System.out.println("获取更新前的缓存值: " + cache.getIfPresent("test"));
         cache.put("test", "testNew");
         System.out.println("获取更新后的缓存值: " + cache.getIfPresent("test"));
+        cache.invalidate("deleteTest");
     }
 }
