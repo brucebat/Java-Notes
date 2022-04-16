@@ -13,9 +13,12 @@ public class Solution {
             length++;
             countIndex = countIndex.next;
         }
+        // 计算需要进行反转的组数
         int groupSize = length / k;
+        // 分组中进行单独反转，但是需要考虑尾结点需要和下一个反转完成的头结点或者是不需要进行反转的分组头结点进行相连
         ListNode gHead = head;
         ListNode pTail = null;
+        // 这里实际参与计算的为反转组数+1，最后需要将
         for (int i = 0; i <= groupSize; i++) {
             if (null == gHead) {
                 break;
@@ -26,6 +29,7 @@ public class Solution {
                 }
                 break;
             }
+            // 需要反转的步长
             int step = k;
             ListNode gPre = null;
             ListNode gTail = gHead;
@@ -36,6 +40,7 @@ public class Solution {
                 gHead = next;
                 step--;
             }
+            // 前一个分组的尾结点和下一个反转完成分组的头结点/不需要进行反转的分组的头节点进行相连
             if (null != pTail) {
                 pTail.next = gPre;
             }
