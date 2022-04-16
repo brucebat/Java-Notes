@@ -14,24 +14,34 @@ public class Solution {
             countIndex = countIndex.next;
         }
         int groupSize = length / k;
-        ListNode currentGroupHead = head;
-        ListNode currentGroupTail = head;
-        for (int i = 0; i < groupSize; i++) {
-            int step = k;
-            ListNode pre = null;
-            while (step != 0) {
-                ListNode next = currentGroupHead.next;
-                currentGroupHead.next = pre;
-                pre = currentGroupHead;
-                currentGroupHead = next;
-                if (step == 1) {
-                    currentGroupTail.next = next;
-                    currentGroupTail = next;
+        ListNode gHead = head;
+        ListNode pTail = null;
+        for (int i = 0; i <= groupSize; i++) {
+            if (null == gHead) {
+                break;
+            }
+            if (i == groupSize) {
+                if (null != pTail) {
+                    pTail.next = gHead;
                 }
+                break;
+            }
+            int step = k;
+            ListNode gPre = null;
+            ListNode gTail = gHead;
+            while (step != 0 && gHead != null) {
+                ListNode next = gHead.next;
+                gHead.next = gPre;
+                gPre = gHead;
+                gHead = next;
                 step--;
             }
+            if (null != pTail) {
+                pTail.next = gPre;
+            }
+            pTail = gTail;
             if (i == 0) {
-                head = pre;
+                head = gPre;
             }
         }
         return head;
@@ -55,6 +65,16 @@ public class Solution {
     }
 
     public static void main(String[] args) {
-
+        ListNode head = new ListNode(1);
+        ListNode one = new ListNode(2);
+        head.next = one;
+        ListNode two = new ListNode(3);
+        one.next = two;
+        ListNode three = new ListNode(4);
+        two.next = three;
+        three.next = new ListNode(5);
+        Solution solution = new Solution();
+        ListNode result = solution.reverseKGroup(head, 2);
+        System.out.println(result);
     }
 }
