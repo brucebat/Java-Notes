@@ -23,6 +23,7 @@ public class Solution {
             if (null == gHead) {
                 break;
             }
+            // 前一个节点和不需要进行反转的分组的头节点进行相连
             if (i == groupSize) {
                 if (null != pTail) {
                     pTail.next = gHead;
@@ -31,6 +32,7 @@ public class Solution {
             }
             // 需要反转的步长
             int step = k;
+            // 进行步长为k的分组链表反转处理
             ListNode gPre = null;
             ListNode gTail = gHead;
             while (step != 0 && gHead != null) {
@@ -40,7 +42,7 @@ public class Solution {
                 gHead = next;
                 step--;
             }
-            // 前一个分组的尾结点和下一个反转完成分组的头结点/不需要进行反转的分组的头节点进行相连
+            // 前一个分组的尾结点和下一个反转完成分组的头结点
             if (null != pTail) {
                 pTail.next = gPre;
             }
