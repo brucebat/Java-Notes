@@ -41,6 +41,14 @@
             <version>4.1.78.Final</version>
         </dependency>
 
+        <!-- byte-buddy -->
+        <dependency>
+            <groupId>net.bytebuddy</groupId>
+            <artifactId>byte-buddy</artifactId>
+            <version>1.12.12</version>
+        </dependency>
+
+
 
 
         <dependency>
