@@ -13,6 +13,7 @@
         <module>DesignPattern</module>
         <module>JavaBasic</module>
         <module>JavaTest</module>
+        <module>NewFeature</module>
     </modules>
 
     <build>
